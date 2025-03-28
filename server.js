@@ -30,6 +30,11 @@ app.use((req, res, next) => {
     next();
 });
 
+
+app.get('/', (req, res) => {
+    res.send('Hello, welcome to the Node.js Express app deployed on Vercel!');
+});
+
 app.use("/api/users", userRoutes);
 app.use("/api/role", roleRoutes);
 app.use("/api/company", companyRoutes);
