@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "/api/users": {
-      "runtime": "nodejs18.x",
-      "timeout": 30
-    }
-  },
   "builds": [
     {
       "src": "server.js",
