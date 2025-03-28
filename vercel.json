@@ -13,7 +13,7 @@
     }
   ],
   "functions": {
-    "api/index.js": {
+    "/api/users": {
       "runtime": "nodejs18.x",
       "timeout": 30
     }
