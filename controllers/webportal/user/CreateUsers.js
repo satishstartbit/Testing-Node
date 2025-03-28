@@ -7,12 +7,14 @@ const getAllUsers = async (req, res, next) => {
 
     try {
         // Get the total user count (for pagination purposes)
+        const totalUserCount = await Users.find();
 
+        console.log("totalUserCount", totalUserCount);
 
 
         // Respond with paginated users and total count
         res.json({
-            "totalUserCount": "test"
+            "totalUserCount": totalUserCount
         });
     } catch (error) {
         next(error); // Handle error if fetching users fails
