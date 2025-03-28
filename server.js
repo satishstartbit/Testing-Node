@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
-const DB_URL = process.env.DATABASE_URL;
+const DB_URL = "mongodb+srv://satish:Root123@shipmenttacking.ndlbj.mongodb.net/Shipment_tracking?retryWrites=true&w=majority&appName=ShipmentTacking"
 mongoose.connect(DB_URL)
 
 app.use(express.json());
