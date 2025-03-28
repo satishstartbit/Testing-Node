@@ -6,16 +6,12 @@ const userRoutes = require("./routes/webportal/userRoutes"); // Your user routes
 
 
 const app = express();
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const DB_URL = "mongodb+srv://satish:Root123@shipmenttacking.ndlbj.mongodb.net/Shipment_tracking?retryWrites=true&w=majority&appName=ShipmentTacking"
-mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB Connected'))
-    .catch((err) => console.error('MongoDB Connection Error: ', err));
 
 
 
@@ -27,8 +23,14 @@ app.get('/', (req, res) => {
     res.send('Hello, welcome to the Node.js Express app deployed on Vercel!');
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
-
-
+mongoose
+    .connect(DB_URL)
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`🚀 Server running on http://localhost:${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error("❌ Failed to connect to MongoDB", err);
+        process.exit(1);
+    });
