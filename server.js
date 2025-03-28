@@ -1,15 +1,16 @@
 // server.js
 const express = require('express');
-const userRoutes = require("./routes/webportal/userRoutes"); // Your user routes
-
 const mongoose = require("mongoose");
 
+const userRoutes = require("./routes/webportal/userRoutes"); // Your user routes
+
+
 const app = express();
+const port = process.env.PORT || 3000;
 
 
-const PORT = process.env.PORT || 3000;
-const DB_URL = "mongodb+srv://satish:Root123@shipmenttacking.ndlbj.mongodb.net/Shipment_tracking?retryWrites=true&w=majority&appName=ShipmentTacking"
-
+const DB_URL = process.env.DATABASE_URL;
+mongoose.connect(DB_URL)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,14 +22,8 @@ app.get('/', (req, res) => {
     res.send('Hello, welcome to the Node.js Express app deployed on Vercel!');
 });
 
-mongoose
-    .connect(DB_URL)
-    .then(() => {
-        app.listen(PORT, () => {
-            console.log(`🚀 Server running on http://localhost:${PORT}`);
-        });
-    })
-    .catch((err) => {
-        console.error("❌ Failed to connect to MongoDB", err);
-        process.exit(1);
-    });
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
+
+
