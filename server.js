@@ -10,12 +10,11 @@ const port = process.env.PORT || 3000;
 
 
 const DB_URL = "mongodb+srv://satish:Root123@shipmenttacking.ndlbj.mongodb.net/Shipment_tracking?retryWrites=true&w=majority&appName=ShipmentTacking"
-mongoose.connect(DB_URL)
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
     .catch((err) => console.error('MongoDB Connection Error: ', err));
 
 
-    
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
