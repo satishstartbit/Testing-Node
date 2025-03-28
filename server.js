@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 mongoose
-    .connect(DB_URL)
+    .connect("mongodb+srv://satish:Root123@shipmenttacking.ndlbj.mongodb.net/Shipment_tracking?retryWrites=true&w=majority&appName=ShipmentTacking")
     .then(() => {
         app.listen(PORT, () => {
             console.log(`🚀 Server running on http://localhost:${PORT}`);
