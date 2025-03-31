@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require("mongoose");
 
-// const userRoutes = require("./routes/userRoutes"); // Your user routes
-// const roleRoutes = require("./routes/roleRoutes"); // Your user routes
-// const companyRoutes = require("./routes/companyRoutes"); // Your user routes
+const userRoutes = require("./routes/userRoutes"); // Your user routes
+const roleRoutes = require("./routes/roleRoutes"); // Your user routes
+const companyRoutes = require("./routes/companyRoutes"); // Your user routes
 const MobileRoutes = require("./routes/MobileuserRoutes");
 
 
@@ -15,9 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// app.use("/api/users", userRoutes);
-// app.use("/api/role", roleRoutes);
-// app.use("/api/company", companyRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/role", roleRoutes);
+app.use("/api/company", companyRoutes);
 app.use("/mobile", MobileRoutes)
 
 
